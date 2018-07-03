@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>Login</h1>
+
+<form id="loginform" asp-action="">
+    <div class="form-group">
+    Server Address
+    <input type="text" class="form-control" name="ftpserver">
+    Username
+    <input type="text" class="form-control" name="username">
+    Password
+    <input type="text" class="form-control" name="password">
+    </div>
+    <button type="submit" class="btn-primary">Submit</button>
+</form>
