@@ -7,6 +7,8 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Renci.SshNet;
+using Renci.SshNet.Sftp;
 
 namespace corewebftp.Pages
 {
@@ -34,20 +36,30 @@ namespace corewebftp.Pages
             return Page();
         }
 
-        public Task SendRequest(string uri, string username, string password) {
+        public Task SendRequest(string uri, string user, string pass) {
             return Task.Run(() => {
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(uri);
-
-                request.Method = WebRequestMethods.Ftp.ListDirectory;
-                request.Proxy = null;
-                request.EnableSsl = true;
-                request.Credentials = new NetworkCredential(username, password);
-           
-                using (FtpWebResponse resp = (FtpWebResponse)request.GetResponse())
+                result = "";
+                try 
                 {
-                    StreamReader reader = new StreamReader(resp.GetResponseStream());
-                    result = reader.ReadToEnd();
-                    result += $"<br>Directory List Complete, status {resp.StatusDescription}";
+                    var connectionInfo = new PasswordConnectionInfo(uri,
+                                        user,
+                                        pass);
+                    using (var client = new SftpClient(connectionInfo))
+                    {
+                        client.Connect();
+                    
+                        var files = client.ListDirectory("/");
+
+
+                        foreach (var file in files) {
+                            result += file.Name + "<br>";
+                        }
+                        result += $"<br>Directory List Complete";
+                    }
+                }
+                catch (Exception e)
+                {
+                    result = "An exception has been caught " + e.ToString();
                 }
             });
         }

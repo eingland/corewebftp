@@ -3,9 +3,9 @@
 /Users/ericingland/Documents/Github/corewebftp/bin/Debug/netcoreapp2.0/corewebftp.runtimeconfig.dev.json
 /Users/ericingland/Documents/Github/corewebftp/bin/Debug/netcoreapp2.0/corewebftp.dll
 /Users/ericingland/Documents/Github/corewebftp/bin/Debug/netcoreapp2.0/corewebftp.pdb
-/Users/ericingland/Documents/Github/corewebftp/obj/Debug/netcoreapp2.0/corewebftp.csprojResolveAssemblyReference.cache
 /Users/ericingland/Documents/Github/corewebftp/obj/Debug/netcoreapp2.0/corewebftp.csproj.CoreCompileInputs.cache
 /Users/ericingland/Documents/Github/corewebftp/obj/Debug/netcoreapp2.0/corewebftp.AssemblyInfoInputs.cache
 /Users/ericingland/Documents/Github/corewebftp/obj/Debug/netcoreapp2.0/corewebftp.AssemblyInfo.cs
 /Users/ericingland/Documents/Github/corewebftp/obj/Debug/netcoreapp2.0/corewebftp.dll
 /Users/ericingland/Documents/Github/corewebftp/obj/Debug/netcoreapp2.0/corewebftp.pdb
+/Users/ericingland/Documents/Github/corewebftp/obj/Debug/netcoreapp2.0/corewebftp.csprojAssemblyReference.cache
