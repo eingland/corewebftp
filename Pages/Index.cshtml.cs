@@ -50,11 +50,10 @@ namespace corewebftp.Pages
                     
                         var files = client.ListDirectory("/");
 
-
                         foreach (var file in files) {
-                            result += file.Name + "<br>";
+                            result += file.Name + ", ";
                         }
-                        result += $"<br>Directory List Complete";
+                        result += $"Directory List Complete";
                     }
                 }
                 catch (Exception e)
