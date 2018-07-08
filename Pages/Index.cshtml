@@ -5,7 +5,7 @@
 }
 
 <h1>Login</h1>
-<div class="alert alert-info">@Model.result</div>
+@if  (!String.IsNullOrEmpty(@Model.result)) {<div class="alert alert-info">@Model.result</div>}
 <form class="form form-horizontal" method="post">
     <div class="form-group">
         <div class="row">

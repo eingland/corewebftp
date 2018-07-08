@@ -12,7 +12,7 @@ namespace corewebftp.Pages
 
         public void OnGet()
         {
-            Message = "Your application description page.";
+            Message = "An open source FTP/SFTP client in ASP.NET Core.";
         }
     }
 }
