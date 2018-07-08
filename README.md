@@ -1,2 +1,2 @@
 # corewebftp
-.NET Core FTP Web Client
+An open source FTP/SFTP client in ASP.NET Core.

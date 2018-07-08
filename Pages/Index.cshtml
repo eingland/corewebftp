@@ -1,27 +1,38 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Ftp Client";
 }
+<h1>Ftp Client</h1>
 
-<h1>Login</h1>
-@if  (!String.IsNullOrEmpty(@Model.result)) {<div class="alert alert-info">@Model.result</div>}
-<form class="form form-horizontal" method="post">
-    <div class="form-group">
-        <div class="row">
-            <label asp-for="FtpCredential.Uri">Server Address:</label>
-            <input asp-for="FtpCredential.Uri" class="form-control">
+<h2>Login</h2>
+@if (!FtpCredential.Password) 
+{
+    <div class="alert alert-info">@Model.result</div>
+    <form class="form form-horizontal" method="post">
+        <div class="form-group">
+            <div class="row">
+                <label asp-for="FtpCredential.Uri">Server Address:</label>
+                <input asp-for="FtpCredential.Uri" class="form-control">
+            </div>
+            <div class="row">
+                <label asp-for="FtpCredential.Username">Username:</label>
+                <input asp-for="FtpCredential.Username" class="form-control">
+            </div>
+            <div class="row">
+                <label asp-for="FtpCredential.Password">Password:</label>
+                @Html.PasswordFor(m => m.FtpCredential.Password, new { @class="form-control" })
+            </div>
         </div>
         <div class="row">
-            <label asp-for="FtpCredential.Username">Username:</label>
-            <input asp-for="FtpCredential.Username" class="form-control">
+            <button type="submit" class="btn-primary">Submit</button>
         </div>
-        <div class="row">
-            <label asp-for="FtpCredential.Password">Password:</label>
-            @Html.PasswordFor(m => m.FtpCredential.Password, new { @class="form-control" })
-        </div>
-    </div>
+    </form>
+} 
+else 
+{
+    <div class="alert alert-info">@Model.result</div>
     <div class="row">
-        <button type="submit" class="btn-primary">Submit</button>
+            <a class="btn-primary" href="/Index/Logout">Logout</a>
     </div>
-</form>
+}

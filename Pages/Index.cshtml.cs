@@ -31,12 +31,18 @@ namespace corewebftp.Pages
             string user = FtpCredential.Username;
             string pass = FtpCredential.Password;
 
-            await SendRequest(uri, user, pass);
+            await GetDirectoryList(uri, user, pass, "/");
 
             return Page();
         }
 
-        public Task SendRequest(string uri, string user, string pass) {
+        public async Task<IActionResult> Logout()
+        {
+            FtpCredential = new FtpCredentialModel();
+            return Page();
+        }
+
+        public Task GetDirectoryList(string uri, string user, string pass, string path) {
             return Task.Run(() => {
                 result = "";
                 try 
@@ -48,12 +54,13 @@ namespace corewebftp.Pages
                     {
                         client.Connect();
                     
-                        var files = client.ListDirectory("/");
+                        var files = client.ListDirectory(path);
+
 
                         foreach (var file in files) {
-                            result += file.Name + ", ";
+                            result += file.Name + "<br>";
                         }
-                        result += $"Directory List Complete";
+                        result += $"<br>Directory List Complete";
                     }
                 }
                 catch (Exception e)
