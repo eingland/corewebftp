@@ -1,0 +1,44 @@
+﻿@page "{handler?}"
+@model IndexModel
+@{
+    ViewData["Title"] = "Ftp Client";
+}
+<h1>Ftp Client</h1>
+
+<h2>Login</h2>
+@if (@Model.FtpCredential != null) 
+{
+    <div class="alert alert-info">@Model.result</div>
+    <ul>
+    @foreach (var file in @Model.fileList)
+    {
+        <li>@file.Name</li>
+    }
+    </ul>
+
+    <div class="row">
+            <a class="btn-primary" href="?handler=logout">Logout</a>
+    </div>
+} 
+else 
+{
+    <form class="form form-horizontal" method="post">
+        <div class="form-group">
+            <div class="row">
+                <label asp-for="FtpCredential.Uri">Server Address:</label>
+                <input asp-for="FtpCredential.Uri" class="form-control">
+            </div>
+            <div class="row">
+                <label asp-for="FtpCredential.Username">Username:</label>
+                <input asp-for="FtpCredential.Username" class="form-control">
+            </div>
+            <div class="row">
+                <label asp-for="FtpCredential.Password">Password:</label>
+                @Html.PasswordFor(m => m.FtpCredential.Password, new { @class="form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn-primary">Submit</button>
+        </div>
+    </form>
+}
