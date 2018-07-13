@@ -6,7 +6,14 @@
 <h1>Ftp Client</h1>
 
 <h2>Login</h2>
-@if (!FtpCredential.Password) 
+@if (@Model.FtpCredential.Password.Length > 0) 
+{
+    <div class="alert alert-info">@Model.result</div>
+    <div class="row">
+            <a class="btn-primary" href="/Index/Logout">Logout</a>
+    </div>
+} 
+else 
 {
     <div class="alert alert-info">@Model.result</div>
     <form class="form form-horizontal" method="post">
@@ -28,11 +35,4 @@
             <button type="submit" class="btn-primary">Submit</button>
         </div>
     </form>
-} 
-else 
-{
-    <div class="alert alert-info">@Model.result</div>
-    <div class="row">
-            <a class="btn-primary" href="/Index/Logout">Logout</a>
-    </div>
 }
